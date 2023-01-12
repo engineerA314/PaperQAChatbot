@@ -1,5 +1,10 @@
 # PaperQAChatbot
 
+openai api key 세팅 후
+```
+pip install -r requirements.txt
+python main.py
+```
 ## Abstract
 haystack 을 이용한 Retrieval Augmented Generator + Chatbot
 
