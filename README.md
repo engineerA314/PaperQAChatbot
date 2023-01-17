@@ -3,15 +3,21 @@
 openai api key 세팅 후
 ```
 pip install -r requirements.txt
-python main.py
+streamlit run streamlit_practice.py
 ```
 ## Abstract
 haystack 을 이용한 Retrieval Augmented Generator + Chatbot
 
 Transformer 논문과 RETRO 논문에 대한 QA가 가능한 chatbot 구현
 
+streamlit을 통해 간단하게 앱 프로토타입 구현
+
 ## Idea
 질문이 들어오면 haystack 의 DocumentStore 와 EmbeddingRetreiver 를 이용해 질문과 가장 유사도가 높은 Chunk를 뽑고, 이를 chatbot의 prompt에 넣어줌
+
+**개선점**
+- Question 과 Document의 chunk 들 사이의 유사도를 확인해 threshold=0.55 이하일 경우에는 chatbot에게 chunk를 제공하지 않음
+  - 이를 통해 일상적인 대화가 가능해졌음
 
 
 ## Prompt Design
