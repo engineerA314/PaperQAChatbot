@@ -16,6 +16,7 @@ openai.api_key = os.getenv('OPENAI_API_KEY')
 engine = "text-davinci-003"
 max_tokens = 1000
 temperature = 0.1
+similarity_threshold = 0.55
 
 #logging the conversation and prompt
 log_path = Path(__file__).resolve().parent / "logs" / str(datetime.now())
@@ -106,7 +107,8 @@ while True:
         fh.write("Question " + str(index) + " : " + user_input + "\n")
         fh.write("Answer : \n")
         for chunk in sample_chunks:
-            fh.write(chunk.content + "\n")
+            fh.write("content : " + chunk.content + "\n")
+            fh.write("score : " + str(chunk.score) + "\n")
         fh.write("\n\n")
 
     prompt = initial_prompt
@@ -115,11 +117,14 @@ while True:
         prompt += "Q : " + qa["question"] + "\n"
         prompt += "A : " + qa["answer"] + "\n"
 
-    prompt += "Q : " + user_input + "\n These informations from the paper below might be helpful.\n"
-    for chunk in sample_chunks:
-        prompt += chunk.content + "\n"
+    if sample_chunks[0].score >= similarity_threshold:
+        prompt += "Q : " + user_input + "\n These informations from the paper below might be helpful.\n"
     
-    prompt += "Answer like above "
+    for chunk in sample_chunks:
+        if chunk.score >= similarity_threshold:
+            prompt += chunk.content + "\n"
+    
+    prompt += "Answer to the question. \n A : "
     prompt += response_start
     # print(prompt)
 
