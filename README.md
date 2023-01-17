@@ -37,8 +37,12 @@ These informations from the paper below might be helpful.
 {chunk3}
 ```
 
+## Result
+![image](https://user-images.githubusercontent.com/86403521/212892566-f69302cd-302d-4c72-8713-5d4ab309a079.png)
+
+
 ## Problems
-1. embedding dot product 기반 유사도가 적절하지 못함. 질문과 크게 관련없어보이는 정보들을 가져옴
+1. embedding dot product 기반 유사도가 적절하지 못함. 질문과 크게 관련없어보이는 정보들을 가져옴 - **개선 완료**
 - 숫자가 들어있는 무의미한 chunk들이 선택되는 경우가 종종 있음.
 
 ![image](https://user-images.githubusercontent.com/86403521/212065152-f5390207-db00-470a-8675-0d9e6cb8b4de.png)
@@ -51,7 +55,7 @@ These informations from the paper below might be helpful.
 
 3. abstract 를 논문에서 주어진 것을 사용했는데 이거보다 더 좋은 방법이 있을 수도 있음
 
-4. 일상적인 대화가 불가능함
+4. 일상적인 대화가 불가능함  - **개선 완료**
 ```
 Ask Question : Thank you. You helped me a lot.
 A :  I understand the information. I'm ready to answer the questions.
